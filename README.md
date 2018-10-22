@@ -1,6 +1,5 @@
-# Joon's Todo List
 
-## <a href="https://joons-todo.netlify.com/" target = "_blank">Joon's Todo List</a>
+# <a href="https://joons-todo.netlify.com/" target = "_blank">Joon's Todo List</a>
 
 breakweek 동안의 과제인 todo-list 구현해보기 실습입니다.
 
