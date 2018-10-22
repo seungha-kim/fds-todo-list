@@ -1,5 +1,280 @@
-$main-color: skyblue;
+@charset "utf-8";
+@import url("https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css");
 
+/* 스타일 초기화 */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1em;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+main {
+  display: block;
+}
+ul {
+  list-style-type: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+// 바디 및 제목 스타일링
 body {
-  background-color: $main-color;
+  font-family: "Spoqa Han Sans", "Sans-serif";
+  font-size: 1rem;
+
+  background: linear-gradient(to bottom, #0b7285, #e3fafc);
+
+  color: white;
+}
+
+// ---------------------------------------------------------------
+
+// 전체 콘텐츠의 중앙 정렬
+.container {
+  width: 600px;
+  margin: 0px auto;
+  text-align: center;
+}
+
+// ---------------------------------------------------------------
+// 헤더 영역 - 제목을 포함
+.header {
+  height: 10vh;
+  margin-top: 100px;
+  text-transform: uppercase;
+}
+.header h1 {
+  font-weight: 400;
+  font-size: 1.2rem;
+  letter-spacing: 6px;
+}
+
+
+// ---------------------------------------------------------------
+
+// 메인 영역
+
+.main {
+  height: 90vh;
+  margin-top: 10px;
+}
+
+// 시간표시
+.main time {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+}
+
+// 할일을 입력할 수 있는 인풋의 스타일링
+.todo-input {
+  margin: 70px 0 0 56px;
+  height: 20px;
+  width: 300px;
+  border: 1px solid #fff;
+  border-radius: 40px;
+  padding: 8px;
+  font-size: 18px;
+  text-indent: 10px;
+}
+
+// 할일 목록 밑에 경계선 그리기
+.actual-list {
+  width: 200px;
+  margin: 70px auto;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #fff;
+}
+
+.todo-list {
+  margin-top: -40px;
+}
+
+// 깨달은 것
+// li {
+//   이럴 필요없이 포지션 렐러티브 설정을 해주자...!
+//   display: flex;
+//   list-style: none;
+//   justify-content: center;
+//   align-items: center;
+//   height: 40px;
+// }
+
+// 줄 긋는 토글을 위한 스타일링
+.done {
+  color: #495057;
+  text-decoration: line-through;
+}
+
+// li 안의 요소들에 관한 스타일링
+// 버튼 스타일링
+
+button {
+  position: relative;
+  margin: 0 3px 0px 3px;
+  height: 20px;
+  width: 40px;
+  bottom: 4px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 8px;
+  color: #495057;
+}
+
+
+// 자바스크립트에서 이벤트 실행 시 추가되는 버튼 요소
+.deleteButton {
+  margin-left: 25px;
+  width: 50px;
+}
+// 버튼들에 호버와 포커스를 추가
+.deleteButton:hover {
+  color: #c92a2a;
+}
+.deleteButton:focus {
+  color: #c92a2a;
+}
+button:hover {
+  color: #339af0;
+}
+
+button:focus {
+  color: #339af0;
+}
+.button-add:hover {
+  color: #40c057;
+}
+.button-add:focus {
+  color: #40c057;
+}
+
+// 목록 앞에 오는 체크박스
+input[type="checkbox"] {
+  position: relative;
+  bottom: 2px;
+  margin-right: 15px;
+  font-size: 2em;
+}
+
+
+// ---------------------------------------------------------------
+
+// 푸터
+
+
+.footer {
+  font-size: 1rem;
+}
+
+.footer span {
+  display: block;
+  padding: 10px;
+  color: #343a40;
+}
+.footer span a {
+  text-decoration: none;
+  color: #343a40;
+}
+.footer span a:visited {
+  color: #343a40;
 }

@@ -1,15 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>해커톤 템플릿 프로젝트</title>
+  <title>Joon's Todo List</title>
   <link rel="stylesheet" href="./index.scss">
+
 </head>
+
 <body>
-  <h1>해커톤 템플릿 프로젝트</h1>
-  
+  <div class="container">
+    <!-- 현재 날짜와 시간을 표시 -->
+    <div class="header">
+      <h1>What is your main focus for today?</h1>
+    </div>
+
+    <!-- 메인 콘텐츠 -->
+    <div class="main">
+      <!-- 시간 표시 -->
+      <time id="time"></time>
+
+      <!-- 사용자가 입력할 수 있는 입력공간을 form으로 구성 -->
+      <form action="" class="todo-form">
+        <input type="text" class="todo-input" name="todo" placeholder="What's your plan?">
+        <button class="button-add">add</button>
+      </form>
+
+      <!-- 사용자가 입력한 목록이 추가될 공간 -->
+      <h3 class="actual-list">TO DO</h3>
+      <ul class="todo-list">
+
+      </ul>
+    </div>
+
+    <!-- 푸터 -->
+    <div class="footer-container">
+      <footer class="footer">
+        <span>email : <a href="mailto:joonkom0625@gmail.com">joonkim0625@gmail.com</a></span>
+        <span>GitHub : <a href="https://github.com/joonkim0625" target="_blank">Joon's GitHub</a></span>
+      </footer>
+    </div>
+  </div>
+
+
+
+
+
   <script src="./index.js"></script>
 </body>
+
 </html>
