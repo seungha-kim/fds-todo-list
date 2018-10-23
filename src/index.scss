@@ -119,6 +119,8 @@ table {
 
 // 바디 및 제목 스타일링
 body {
+
+
   font-family: "Spoqa Han Sans", "Sans-serif";
   font-size: 1rem;
 
@@ -131,6 +133,7 @@ body {
 
 // 전체 콘텐츠의 중앙 정렬
 .container {
+
   width: 600px;
   margin: 0px auto;
   text-align: center;
@@ -139,7 +142,7 @@ body {
 // ---------------------------------------------------------------
 // 헤더 영역 - 제목을 포함
 .header {
-  height: 10vh;
+
   margin-top: 100px;
   text-transform: uppercase;
 }
@@ -155,8 +158,10 @@ body {
 // 메인 영역
 
 .main {
-  height: 90vh;
+
+
   margin-top: 10px;
+
 }
 
 // 시간표시
@@ -261,6 +266,9 @@ input[type="checkbox"] {
 
 // 푸터
 
+.footer-container {
+
+}
 
 .footer {
   font-size: 1rem;
