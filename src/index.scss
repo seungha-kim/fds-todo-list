@@ -119,7 +119,7 @@ table {
 
 // 바디 및 제목 스타일링
 body {
-
+  min-height: 100vh;
 
   font-family: "Spoqa Han Sans", "Sans-serif";
   font-size: 1rem;
@@ -127,13 +127,13 @@ body {
   background: linear-gradient(to bottom, #0b7285, #e3fafc);
 
   color: white;
+  position: relative;
 }
 
 // ---------------------------------------------------------------
 
 // 전체 콘텐츠의 중앙 정렬
 .container {
-
   width: 600px;
   margin: 0px auto;
   text-align: center;
@@ -142,8 +142,7 @@ body {
 // ---------------------------------------------------------------
 // 헤더 영역 - 제목을 포함
 .header {
-
-  margin-top: 100px;
+  padding-top: 100px;
   text-transform: uppercase;
 }
 .header h1 {
@@ -152,16 +151,13 @@ body {
   letter-spacing: 6px;
 }
 
-
 // ---------------------------------------------------------------
 
 // 메인 영역
 
 .main {
-
-
   margin-top: 10px;
-
+  padding-bottom: 150px;
 }
 
 // 시간표시
@@ -226,7 +222,6 @@ button {
   color: #495057;
 }
 
-
 // 자바스크립트에서 이벤트 실행 시 추가되는 버튼 요소
 .deleteButton {
   margin-left: 25px;
@@ -261,13 +256,15 @@ input[type="checkbox"] {
   font-size: 2em;
 }
 
-
 // ---------------------------------------------------------------
 
 // 푸터
 
 .footer-container {
+  position: absolute;
 
+  width: 600px;
+  bottom: 0;
 }
 
 .footer {
