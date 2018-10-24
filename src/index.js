@@ -2,6 +2,20 @@ const todoFormEl = document.querySelector(".todo-form");
 
 const todoListEl = document.querySelector(".todo-list");
 
+// --- **local storage** 관련 ---
+const inputText = document.getElementById("input-text");
+
+let itemsArray = localStorage.getItem("items")
+  ? JSON.parse(localStorage.getItem("items"))
+  : [];
+
+localStorage.setItem("items", JSON.stringify(itemsArray));
+const data = JSON.parse(localStorage.getItem("items"));
+
+// --------------------------
+
+// --------------------------
+
 // 요일, 시간 표시 추가
 
 var timeInterval = 1000;
@@ -12,10 +26,23 @@ function showCurrentTime() {
   var timestampString = buildTimestampString(timestamp);
 
   appendTimestamp(timestampString, timestamp);
-};
+}
 
 function getCurrentTimestamp() {
-  var months = new Array('January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+  var months = new Array(
+    "January",
+    "Febuary",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  );
   var dateObj = new Date();
 
   var timestamp = {
@@ -23,31 +50,51 @@ function getCurrentTimestamp() {
     month: months[dateObj.getMonth()],
     year: dateObj.getFullYear(),
     hour: dateObj.getHours(),
-    minutes: (dateObj.getMinutes() <= 9 ? '0' + dateObj.getMinutes() : dateObj.getMinutes())
-  }
+    minutes:
+      dateObj.getMinutes() <= 9
+        ? "0" + dateObj.getMinutes()
+        : dateObj.getMinutes()
+  };
 
   return timestamp;
 }
 
 function buildTimestampString(timestamp) {
-  var string = timestamp.month +
-    ' ' + timestamp.day +
-    ' ' + timestamp.year +
-    '<br />' + timestamp.hour +
-    ':' + timestamp.minutes +
-    ' ' + (timestamp.hour <= 11 ? 'am' : 'pm');
+  var string =
+    timestamp.month +
+    " " +
+    timestamp.day +
+    " " +
+    timestamp.year +
+    "<br />" +
+    timestamp.hour +
+    ":" +
+    timestamp.minutes +
+    " " +
+    (timestamp.hour <= 11 ? "am" : "pm");
 
   return string;
 }
 function appendTimestamp(timestampString, timestamp) {
-  var timeDiv = document.getElementById('time');
+  var timeDiv = document.getElementById("time");
 
   if (timeDiv !== null) {
     timeDiv.innerHTML = timestampString;
-    timeDiv.setAttribute('datetime', timestamp.year + '-' +
-      (timestamp.month + 1 <= 9 ? '0' + (timestamp.month + 1) : timestamp.month + 1) + '-' + timestamp.day + ' ' + timestamp.hour + ':' + timestamp.minutes);
-
-  };
+    timeDiv.setAttribute(
+      "datetime",
+      timestamp.year +
+        "-" +
+        (timestamp.month + 1 <= 9
+          ? "0" + (timestamp.month + 1)
+          : timestamp.month + 1) +
+        "-" +
+        timestamp.day +
+        " " +
+        timestamp.hour +
+        ":" +
+        timestamp.minutes
+    );
+  }
 }
 
 setInterval(showCurrentTime, timeInterval);
@@ -57,9 +104,16 @@ setInterval(showCurrentTime, timeInterval);
 todoFormEl.addEventListener("submit", e => {
   e.preventDefault();
 
+  // --- **local storage** 관련 ---
+
+  itemsArray.push(e.target.elements.todo.value);
+  localStorage.setItem("items", JSON.stringify(itemsArray));
+  // ----------------------------
+
   // 입력된 input의 값이 추가를 눌렀을 경우 발생하는 이벤트
   addTodo(e.target.elements.todo.value);
   // 추가를 누른 후, input창이 리셋
+
   e.target.reset();
 });
 
@@ -126,3 +180,22 @@ function addTodo(newTodoText) {
     }
   });
 }
+
+// 로컬 서버 저장소
+
+// const todoFormEl = document.querySelector(".todo-form"); - form element
+
+// const todoListEl = document.querySelector(".todo-list"); - ul element
+
+// 클리어를 위한 새 버튼이 필요할 것...
+// input text(id = input-text) 같은걸로 해서 지정해주어야 할듯
+// const inputText = document.getElementById('input-text')
+// 아님 위가 지정하는게 e.target.elements.todo.value 이걸 뜻하는 것일 수도
+
+// --- **local storage** 관련 ---
+
+data.forEach(item => {
+  addTodo(item);
+});
+
+// ------------------------------
