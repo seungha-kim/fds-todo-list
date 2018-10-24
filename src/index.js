@@ -146,6 +146,7 @@ function addTodo(newTodoText) {
   // 삭제 버튼을 클릭했을 때 할일 항목이 삭제되도록 하기
   deleteButtonEl.addEventListener("click", e => {
     todoListEl.removeChild(todoItemEl);
+    updateItems();
   });
 
   // ------ 위로 이동 버튼 생성 ------
@@ -159,6 +160,7 @@ function addTodo(newTodoText) {
     // 첫번째 li요소가 위로 버튼이 눌렸을 시, 맨 아래로 가는 것을 방지.
     if (todoItemEl.previousElementSibling != null) {
       todoListEl.insertBefore(todoItemEl, todoItemEl.previousElementSibling);
+      updateItems();
     }
   });
 
@@ -177,6 +179,7 @@ function addTodo(newTodoText) {
         todoItemEl,
         todoItemEl.nextElementSibling.nextElementSibling
       );
+      updateItems();
     }
   });
 }
@@ -193,6 +196,14 @@ function addTodo(newTodoText) {
 // 아님 위가 지정하는게 e.target.elements.todo.value 이걸 뜻하는 것일 수도
 
 // --- **local storage** 관련 ---
+
+function updateItems() {
+  itemsArray = [];
+  for (let content of document.querySelectorAll("li")) {
+    itemsArray.push(content.textContent.slice(0, -12));
+  }
+  localStorage.setItem("items", JSON.stringify(itemsArray));
+}
 
 data.forEach(item => {
   addTodo(item);
