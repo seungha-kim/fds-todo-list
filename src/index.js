@@ -185,18 +185,8 @@ function addTodo(newTodoText) {
 }
 
 // 로컬 서버 저장소
-
-// const todoFormEl = document.querySelector(".todo-form"); - form element
-
-// const todoListEl = document.querySelector(".todo-list"); - ul element
-
-// 클리어를 위한 새 버튼이 필요할 것...
-// input text(id = input-text) 같은걸로 해서 지정해주어야 할듯
-// const inputText = document.getElementById('input-text')
-// 아님 위가 지정하는게 e.target.elements.todo.value 이걸 뜻하는 것일 수도
-
 // --- **local storage** 관련 ---
-
+// Declan님이 도와주신 코드입니다 - 매번 어레이에 변경된 상황을 재저장하는 함수
 function updateItems() {
   itemsArray = [];
   for (let content of document.querySelectorAll("li")) {
