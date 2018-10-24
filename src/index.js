@@ -134,7 +134,10 @@ function addTodo(newTodoText) {
   checkBoxEl.type = "checkbox";
   todoItemEl.insertBefore(checkBoxEl, theFirstEl);
   checkBoxEl.addEventListener("click", e => {
+
     todoItemEl.classList.toggle("done");
+
+
   });
 
   // li가 생성될 시 옆에 delete기능이 있는 버튼을 옆에 생성하기.
