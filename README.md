@@ -18,7 +18,7 @@ breakweek 동안의 과제인 todo-list 구현해보기 실습입니다.
 
 ---
 
-디자인 구현 도움을 동료 수강생이신 [소영님](https://github.com/bbgrams)이 도와주셨습니다.
+디자인 구현을 동료 수강생이신 [소영님](https://github.com/bbgrams)이 도와주셨습니다.
 기능 구현에 있어서 제 친구 [김태훈](https://github.com/realkth)님의 도움을 받았습니다.
 
 두 분에게 감사함을 여기에 이렇게나마 표현합니다. 감사합니다!
