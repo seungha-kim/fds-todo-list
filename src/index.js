@@ -145,6 +145,7 @@ function addTodo(newTodoText) {
 
   // 삭제 버튼을 클릭했을 때 할일 항목이 삭제되도록 하기
   deleteButtonEl.addEventListener("click", e => {
+    // localStorage.clear()
     todoListEl.removeChild(todoItemEl);
   });
 
@@ -159,6 +160,10 @@ function addTodo(newTodoText) {
     // 첫번째 li요소가 위로 버튼이 눌렸을 시, 맨 아래로 가는 것을 방지.
     if (todoItemEl.previousElementSibling != null) {
       todoListEl.insertBefore(todoItemEl, todoItemEl.previousElementSibling);
+
+      // itemsArray.push(newTodoText);
+      // localStorage.setItem("items", JSON.stringify(itemsArray));
+
     }
   });
 
@@ -177,6 +182,9 @@ function addTodo(newTodoText) {
         todoItemEl,
         todoItemEl.nextElementSibling.nextElementSibling
       );
+
+      // localStorage.setItem("items", JSON.stringify(itemsArray));
+
     }
   });
 }
