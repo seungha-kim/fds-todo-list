@@ -1,3 +1,7 @@
+// *** 코멘트 ***
+// 현재 localStorage에 데이터를 저장하는 방식을 사용하셨는데, 브라우저가 바뀌면 해당 내용을 볼 수 없는 문제가 있습니다.
+// 나중에 간단히 데이터를 저장할 수 있는 서버를 이용해 할 일 목록 데이터를 보존하는 실습을 해 볼 예정입니다(다음주 쯤?) 조금만 기다려주세요!
+
 const todoFormEl = document.querySelector(".todo-form");
 
 const todoListEl = document.querySelector(".todo-list");
@@ -5,6 +9,8 @@ const todoListEl = document.querySelector(".todo-list");
 // --- **local storage** 관련 ---
 const inputText = document.getElementById("input-text");
 
+// 아래 부분을 이렇게 바꾸어도 괜찮을 것 같습니다.
+// let itemsArray = JSON.parse(localStorage.getItem('items')) || [];
 let itemsArray = localStorage.getItem("items")
   ? JSON.parse(localStorage.getItem("items"))
   : [];
@@ -50,6 +56,8 @@ function getCurrentTimestamp() {
     month: months[dateObj.getMonth()],
     year: dateObj.getFullYear(),
     hour: dateObj.getHours(),
+    // 아래 minutes을 이렇게 만들어도 됩니다.
+    // dateObj.getMinutes().toString().padStart(2, '0')
     minutes:
       dateObj.getMinutes() <= 9
         ? "0" + dateObj.getMinutes()
@@ -193,6 +201,17 @@ function addTodo(newTodoText) {
 function updateItems() {
   itemsArray = [];
   for (let content of document.querySelectorAll("li")) {
+    // 1. 
+    // 잘 동작하기는 합니다만, -12라는 숫자가 'deleteupdown' 이라는 텍스트에 의존적이기 때문에 좋지 않은 코드입니다.
+    // (예를 들어 위 텍스트를 변경하게 되면, 전혀 상관없어보이는 아래의 숫자 12도 그에 맞게 바꾸어주어야 합니다.)
+    // 이런 경우, 따로 할 일 텍스트를 둘러싸는 span 태그를 만들어서 그 놈의 textContent를 가져오도록 만들어주는 것이 좋습니다.
+    // 2.
+    // 현재 우리 프로그램에는 '할 일 텍스트'라는 상태가 있습니다.
+    // 그리고 현재 코드에서는 상태의 저장소로 'DOM 객체의 textContent 속성', 그리고 'localStorage'를 동시에 사용하고 있습니다.
+    // 이렇게, 상태 저장소가 여러개로 나뉘어지면 '상태 불일치' 문제가 생기기 쉽습니다.
+    // (예를 들어, HTML에는 변경사항을 적용했는데 localStorage에 적용하는 것을 깜빡하는 경우)
+    // 그래서 상태 저장소는 가능한 하나만 사용하는 것이 좋습니다. 'Single source of truth' 혹은 '진리의 유일한 원천' 키워드로 검색해보시고,
+    // 상태 저장소를 하나만 두는 쪽으로 코드도 변경해보세요!
     itemsArray.push(content.textContent.slice(0, -12));
   }
   localStorage.setItem("items", JSON.stringify(itemsArray));
